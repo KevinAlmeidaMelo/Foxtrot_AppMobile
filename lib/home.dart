@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api.dart';
+import 'login.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,6 +23,25 @@ class Home extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            Authentication.isLoggedIn
+                ? ListTile(
+                    leading: const Icon(Icons.logout),
+                    title: const Text('Logout'),
+                    onTap: () {
+                      Authentication.isLoggedIn = false;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                  )
+                : ListTile(
+                    leading: const Icon(Icons.login),
+                    title: const Text('Login'),
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                  ),
           ],
         ),
       ),

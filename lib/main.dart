@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 import 'home.dart';
 
 void main() {
@@ -12,7 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FOXTROT',
-      home: Home(), // Chama o widget Home
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/home': (context) => Home(),
+      },
     );
   }
 }
