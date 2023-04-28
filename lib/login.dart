@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'home.dart';
 
 class Authentication {
   static bool isLoggedIn = false;
@@ -19,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   void _submitForm() async {
     final email = _emailController.text;
     final password = _passwordController.text;
-    final url = Uri.parse('https://fakestoreapi.com/auth/login');
+    final url = Uri.parse('http://localhost:3000/users');
 
     final response = await http.post(url, body: {
       'username': email,
