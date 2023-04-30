@@ -1,3 +1,4 @@
+import 'package:exemplo/detalhe_page.dart';
 import 'package:flutter/material.dart';
 import 'api.dart';
 
@@ -31,7 +32,18 @@ class _ProdutosPageState extends State<ProdutosPage> {
               ),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return Container(
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetalhePage(produto: snapshot.data![index]),
+                        fullscreenDialog: true,
+                      ),
+                    );
+                  },
+                  child: Container(
                     padding: EdgeInsets.all(8),
                     color: Colors.white,
                     child: Column(
@@ -40,7 +52,10 @@ class _ProdutosPageState extends State<ProdutosPage> {
                         children: [
                           Image.network(snapshot.data![index]['foto']),
                           Text(snapshot.data![index]['nome']),
-                        ]));
+                          Text(snapshot.data![index]['price'].toString()),
+                        ]),
+                  ),
+                );
               });
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
