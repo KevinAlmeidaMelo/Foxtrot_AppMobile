@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   void _submitForm() async {
     final email = _emailController.text;
     final password = _passwordController.text;
-    final url = Uri.parse('http://localhost:3000/users');
+    final url = Uri.parse('https://fakestoreapi.com/auth/login');
 
     final response = await http.post(url, body: {
       'username': email,
