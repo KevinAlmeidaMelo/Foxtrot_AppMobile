@@ -98,9 +98,20 @@ class CarrinhoPage extends StatelessWidget {
           ],
         ),
       ),body: ListView.builder(itemCount: produtos.length,
+      padding: EdgeInsets.symmetric(vertical: 16),
       itemBuilder: (context, index) {
         final produto = produtos[index];
-        return Text(produto.name);
+        return ListTile(
+          leading: CircleAvatar(
+            radius: 20,
+            backgroundImage: NetworkImage(produto.image),),
+            title: Text(produto.name,
+            style: TextStyle(fontWeight: FontWeight.w600),
+            ),
+            subtitle: Text("R\$ ${produto.price.toString()}",
+            style: TextStyle(color: Colors.green),
+            ),
+        );
       },),
     );
   }
