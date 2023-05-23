@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'carrinho_page.dart';
+import 'controllers/controle_de_lista.dart';
 import 'login.dart';
+import 'models/product_models.dart';
 import 'produtos.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+   Home({Key? key}) : super(key: key);
+final Controllers controllers =Controllers();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +27,17 @@ class Home extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text('Carrinho'),
+              onTap: () {
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CarrinhoPage(produtos: controllers.listaDeCarrinho,)),
+                );
+              },
+              
             ),
             Authentication.isLoggedIn
                 ? ListTile(
