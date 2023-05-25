@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart'; // Importação do pacote 'dio' para fazer solicitações HTTP
 import 'package:exemplo/controllers/controle_de_lista.dart'; // Importação do controlador de lista
 import 'package:exemplo/models/product_models.dart'; // Importação do modelo de produto
-import 'package:exemplo/services/product_services.dart'; // Importação dos serviços relacionados a produtos
 import 'package:flutter/material.dart'; // Importação do pacote Flutter
 import 'carrinho_page.dart'; // Importação da página do carrinho de compras
 
+// ignore: must_be_immutable
 class DetalhePage extends StatefulWidget {
   Map<String, dynamic> produto; // Mapa de dados do produto
 
@@ -19,18 +19,23 @@ class _DetalhePageState extends State<DetalhePage> {
 
   Future<List<ProdutoModel>> addToCart() async {
     final dio = Dio(); // Instância do objeto Dio para fazer solicitações HTTP
-    var url = "http://localhost:3000/carrinho"; // URL do endpoint para adicionar produtos ao carrinho
+    var url =
+        "http://localhost:3000/carrinho"; // URL do endpoint para adicionar produtos ao carrinho
     final data = widget.produto; // Dados do produto a serem enviados
-    var response = await dio.post(url, data: data); // Solicitação POST para adicionar o produto ao carrinho
+    var response = await dio.post(url,
+        data: data); // Solicitação POST para adicionar o produto ao carrinho
     // Decodificar a resposta para obter a lista de produtos do carrinho
-    return (response.data as List).map((e) => ProdutoModel.fromJson(e)).toList();
+    return (response.data as List)
+        .map((e) => ProdutoModel.fromJson(e))
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.produto['nome']), // Título da barra de aplicativo com o nome do produto
+        title: Text(widget.produto[
+            'nome']), // Título da barra de aplicativo com o nome do produto
       ),
       body: ListView(
         children: [
@@ -44,7 +49,10 @@ class _DetalhePageState extends State<DetalhePage> {
               addToCart().then((data) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CarrinhoPage(produtos: data,)),
+                  MaterialPageRoute(
+                      builder: (context) => CarrinhoPage(
+                            produtos: data,
+                          )),
                 );
               });
             },
@@ -60,10 +68,12 @@ class _DetalhePageState extends State<DetalhePage> {
               ],
             ),
             style: ButtonStyle(
-              fixedSize: MaterialStateProperty.all<Size>(Size(250, 50)), // Tamanho fixo do botão
+              fixedSize: MaterialStateProperty.all<Size>(
+                  Size(250, 50)), // Tamanho fixo do botão
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Borda arredondada do botão
+                  borderRadius:
+                      BorderRadius.circular(20), // Borda arredondada do botão
                 ),
               ),
             ),
