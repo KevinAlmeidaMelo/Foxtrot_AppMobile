@@ -141,7 +141,7 @@ class PaginaCompra extends StatelessWidget {
         title: Text('Finalizar Compra'),
       ),
       body: Center(
-        child: Text('Página de finalização da compra'),
+        child: Text('Parabéns sua compra foi finalizada'),
       ),
     );
   }

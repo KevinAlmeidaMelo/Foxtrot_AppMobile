@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'carrinho_page.dart';
 import 'controllers/controle_de_lista.dart';
 import 'login.dart';
-import 'models/product_models.dart';
 import 'produtos.dart';
 
 class Home extends StatelessWidget {
@@ -14,7 +13,7 @@ final Controllers controllers =Controllers();
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text('Minha Loja'),
+        title: const Text('Foxtrot'),
       ),
       body: const ProdutosPage(),
       drawer: Drawer(

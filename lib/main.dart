@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'FOXTROT',
       initialRoute: '/login',
+      debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => LoginPage(),
         '/home': (context) => Home(),
